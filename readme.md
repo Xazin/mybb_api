@@ -23,12 +23,12 @@ This list describes the progress of the plugin, everything below will be impleme
 
 ### Threads
 
-✅ GET: Threads.php?:id
-❌ GET: Threads.php?:author
-❌ GET: Threads.php?:author&:page
-❌ GET: Threads.php?:search
-❌ GET: Threads.php
-❌ GET: Threads.php?:page
+- ✅ GET: Threads.php?:id
+- ❌ GET: Threads.php?:author
+- ❌ GET: Threads.php?:author&:page
+- ❌ GET: Threads.php?:search
+- ❌ GET: Threads.php
+- ❌ GET: Threads.php?:page
 
 Note: the following endpoints are not in planning, but will be considered!
 
