@@ -7,10 +7,13 @@ $templatelist = 'api';
 
 require_once 'global.php';
 
+global $mybb;
+
 add_breadcrumb('API Documentation', 'api.php');
 
 $plugins->run_hooks('api_start');
 
+eval("\$bburl = \"".$mybb->settings['bburl']."\";");
 eval("\$menu = \"".$templates->get('api_menu')."\";");
 eval("\$docs = \"".$templates->get('api_docs')."\";");
 

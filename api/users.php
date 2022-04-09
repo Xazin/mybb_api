@@ -11,6 +11,7 @@ require_once './classes/user.php';
 global $mybb, $db;
 
 if ($mybb->request_method == 'post') {
+    http_response_code(501);
     $error = new ApiError(false, 'POST request failed: cannot POST here');
     $error->display();
     return;
@@ -30,9 +31,11 @@ if ($_GET['id'] || $_GET['name']) {
     $user = $db->fetch_array($query);
 
     if ($user) {
+        http_response_code(200);
         $user = new User($user);
         echo $user->toJson();
     } else {
+        http_response_code(404);
         $error = new ApiError(false, "GET request failed: no user matching given identifier ($identifier)");
         $error->display();
     }
