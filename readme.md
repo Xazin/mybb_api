@@ -16,37 +16,37 @@ This list describes the progress of the plugin, everything below will be impleme
 
 ### Users
 
-✅ GET: Users.php?:id
-✅ GET: Users.php?:name
-❌ GET: Users.php
-❌ GET: Users.php?:page
+- ✅ GET: Users.php?:id
+- ✅ GET: Users.php?:name
+- ❌ GET: Users.php
+- ❌ GET: Users.php?:page
 
 ### Threads
 
-❌ GET: Threads.php?:id
-❌ GET: Threads.php?:author
-❌ GET: Threads.php?:author&:page
-❌ GET: Threads.php?:search
-❌ GET: Threads.php
-❌ GET: Threads.php?:page
+- ❌ GET: Threads.php?:id
+- ❌ GET: Threads.php?:author
+- ❌ GET: Threads.php?:author&:page
+- ❌ GET: Threads.php?:search
+- ❌ GET: Threads.php
+- ❌ GET: Threads.php?:page
 
 Note: the following endpoints are not in planning, but will be considered!
-❌ POST: Threads.php
-❌ PUT: Threads.php?:id
+- ❌ POST: Threads.php
+- ❌ PUT: Threads.php?:id
 
 ### Posts
 
-❌ GET: Posts.php?:id
-❌ GET: Posts.php?:tid
-❌ GET: Posts.php?:author
-❌ GET: Posts.php?:author&:page
+- ❌ GET: Posts.php?:id
+- ❌ GET: Posts.php?:tid
+- ❌ GET: Posts.php?:author
+- ❌ GET: Posts.php?:author&:page
 
 Note: the following endpoints aer not in planning, but will be considered!
-❌ POST: Posts.php
-❌ PUT: Posts.php?:id
+- ❌ POST: Posts.php
+- ❌ PUT: Posts.php?:id
 
 ### Groups
 
-❌ GET: Groups.php
-❌ GET: Groups.php?:id
-❌ GET: Groups.php?:uid
+- ❌ GET: Groups.php
+- ❌ GET: Groups.php?:id
+- ❌ GET: Groups.php?:uid
