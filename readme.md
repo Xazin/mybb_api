@@ -23,7 +23,7 @@ This list describes the progress of the plugin, everything below will be impleme
 
 ### Threads
 
-❌ GET: Threads.php?:id
+✅ GET: Threads.php?:id
 ❌ GET: Threads.php?:author
 ❌ GET: Threads.php?:author&:page
 ❌ GET: Threads.php?:search
