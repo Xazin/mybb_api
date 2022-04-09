@@ -10,6 +10,6 @@ class ApiError {
     }
 
     public function display() {
-        echo json_encode(array('success' => $this->success, 'message' => $this->message));
+        echo json_encode(array('success' => $this->success, 'message' => $this->message), JSON_PRETTY_PRINT);
     }
 }
