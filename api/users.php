@@ -6,7 +6,6 @@ define('THIS_SCRIPT', 'user.php');
 require_once '../global.php';
 require_once './utils/errors.php';
 require_once './classes/classes.php';
-require_once './classes/user.php';
 
 global $mybb, $db;
 
@@ -17,8 +16,9 @@ if ($mybb->request_method == 'post') {
     return;
 }
 
+header('Content-Type: Application/Json');
+
 if ($_GET['id'] || $_GET['name']) {
-    header('Content-Type: Application/Json');
 
     $identifier = $_GET['id'] ?? $_GET['name'];
     
@@ -31,7 +31,14 @@ if ($_GET['id'] || $_GET['name']) {
     $user = $db->fetch_array($query);
 
     if ($user) {
+        global $mybb;
+
         http_response_code(200);
+        
+        if (!$user['avatar'] || empty($user['avatar'])) {
+            $user['avatar'] = $mybb->settings['useravatar'];
+        }
+
         $user = new User($user);
         echo $user->toJson();
     } else {
@@ -41,6 +48,7 @@ if ($_GET['id'] || $_GET['name']) {
     }
 } else {
     // TODO: Implement paginated Users
+    http_response_code(400);
     $error = new ApiError(false, 'GET request failed: missing identifier to find a user');
     $error->display();
 }
