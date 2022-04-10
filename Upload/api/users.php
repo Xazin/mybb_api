@@ -1,7 +1,7 @@
 <?php
 
 define('IN_MYBB', 1);
-define('THIS_SCRIPT', 'user.php');
+define('THIS_SCRIPT', 'users.php');
 
 require_once '../global.php';
 require_once './utils/errors.php';
