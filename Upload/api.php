@@ -13,11 +13,11 @@ add_breadcrumb('API Documentation', 'api.php');
 
 $plugins->run_hooks('api_start');
 
-eval("\$bburl = \"".$mybb->settings['bburl']."\";");
-eval("\$menu = \"".$templates->get('api_menu')."\";");
-eval("\$docs = \"".$templates->get('api_docs')."\";");
+eval("\$bburl = \"" . $mybb->settings['bburl'] . "\";");
+eval("\$menu = \"" . $templates->get('api_menu') . "\";");
+eval("\$docs = \"" . $templates->get('api_docs') . "\";");
 
 $plugins->run_hooks('api_end');
 
-eval("\$page = \"".$templates->get('api')."\";");
+eval("\$page = \"" . $templates->get('api') . "\";");
 output_page($page);
