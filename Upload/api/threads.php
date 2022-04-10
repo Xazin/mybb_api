@@ -1,7 +1,7 @@
 <?php
 
 define('IN_MYBB', 1);
-define('THIS_SCRIPT', 'user.php');
+define('THIS_SCRIPT', 'threads.php');
 
 require_once '../global.php';
 require_once './utils/errors.php';
@@ -38,7 +38,7 @@ if ($_GET['id']) {
         $error->display();
     }
 } else {
-    // TODO: Implement paginated Users
+    // TODO: Implement paginated Threads
     http_response_code(400);
     $error = new ApiError(false, 'GET request failed: missing identifier to find a thread');
     $error->display();
