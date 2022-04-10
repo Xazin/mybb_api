@@ -2,7 +2,8 @@
 
 include_once './post.php';
 
-class Thread {
+class Thread
+{
     private int $id;
     private int $fid;
     private string $subject;
@@ -12,9 +13,11 @@ class Thread {
     private int $replies;
     private bool $closed;
     private bool $sticky;
+    private int $createdAt;
     private Post $post;
 
-    public function __construct(array $thread, Post $post) {
+    public function __construct(array $thread, Post $post)
+    {
         $this->id = $thread['tid'];
         $this->subject = $thread['subject'];
         $this->fid = $thread['fid'];
@@ -24,12 +27,14 @@ class Thread {
         $this->replies = $thread['replies'];
         $this->closed = (bool) $thread['closed'];
         $this->sticky = (bool) $thread['sticky'];
+        $this->createdAt = $thread['dateline'];
         $this->post = $post;
     }
 
-    public function toJson(): string {
+    public function toJson(): string
+    {
         return json_encode(
-            array(
+            [
                 'id' => $this->id,
                 'subject' => $this->subject,
                 'fid' => $this->fid,
@@ -39,8 +44,9 @@ class Thread {
                 'replies' => $this->replies,
                 'closed' => $this->closed,
                 'sticky' => $this->sticky,
+                'createdAt' => $this->createdAt,
                 'post' => $this->post->toArray(),
-            ),
+            ],
             JSON_PRETTY_PRINT
         );
     }
