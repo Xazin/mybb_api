@@ -33,8 +33,6 @@ function api_install()
     include_once 'api/templates.php';
     include_once 'api/styles.php';
 
-    echo '<pre><code>' . $api_template . '</code></pre>';
-
     $template_group = [
         'prefix' => $db->escape_string('api'),
         'title' => $db->escape_string('API'),

@@ -39,7 +39,6 @@ $stylesheet = "    .wrapper {
     .sidebar-nav {
         top: 80px;
         bottom: 52px;
-        overflow-y: scroll;
         -webkit-overflow-scrolling: touch;
         overflow-x: auto;
         width: 100%;
@@ -84,7 +83,6 @@ $stylesheet = "    .wrapper {
         bottom: 0;
         right: 0;
         box-sizing: border-box;
-        overflow-y: scroll;
         -webkit-overflow-scrolling: touch;
         background: #fff;
         outline: none!important;
@@ -150,4 +148,42 @@ $stylesheet = "    .wrapper {
     
     code {
         color: #fff;
-    }";
+    }
+    
+    badge {
+        padding: 4px;
+        color: white;
+        background: black;
+        border-radius: 10px;
+    }
+	
+	badge.get {
+        background: green!important;
+    }
+    
+    badge.put {
+        background: blue!important;
+    }
+	
+	.params {
+		width: 100%;
+		padding-bottom: 8px;
+		padding-top: 3px;
+		margin-bottom: 2px;
+		border-bottom: 1px solid #dddddd;
+		font-weight: bold;
+		display: inline-flex;
+		flex-direction: row;
+		flex-wrap: nowrap;
+		align-items: center;
+	}
+	
+	.description {
+		display: inline-block;
+		text-align: end;
+		flex: 1;
+	}
+	
+	.params span {
+		padding-left: 10px;
+	}";

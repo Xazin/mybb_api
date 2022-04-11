@@ -38,9 +38,9 @@ $api_menu_template = '<div id="sidebar">
         <h5>ENDPOINTS</h5>
     </div>
     <ul class="sidebar-nav-items">
-        <li><a href="#user" class="sidebar-nav-item">User</a></li>
-        <li><a href="#thread" class="sidebar-nav-item">Thread</a></li>
-        <li><a href="#post" class="sidebar-nav-item">Post</a></li>
+        <li><a href="#users" class="sidebar-nav-item">User</a></li>
+        <li><a href="#threads" class="sidebar-nav-item">Thread</a></li>
+        <li><a href="#posts" class="sidebar-nav-item">Post</a></li>
     </ul>
 </nav>
 </div>';
@@ -96,6 +96,68 @@ $api_docs_template = '<div class="content">
                     <div class="method-example-request-title">BEARER TOKEN</div>
                 </div>
                 <pre><code>Bearer: MYBB-AW6A-DWA9-A131-A69A</code></pre>
+            </div>
+        </div>
+    </div>
+</section>
+	
+<section id="users" class="method">
+    <div class="method-area">
+        <div class="method-doc">
+            <div class="method-title">
+                <h1>Users</h1>
+            </div>
+            <p>
+				The users endpoint can retrieve and search for a user either by their <strong>id</strong> or by their <b>username</b>. Currently both methods 
+				look for an exact match, if you need to do a search on users you can use the <i>search</i> parameter.
+            </p>
+			<p>
+				Either parameter must exist, and if multiple parameters are given only one will be used after prioritization. (ID = High, Name = Medium, Search = Low)
+			</p>
+			<br />
+            <h3>Parameters</h3>
+			<table width="100%">
+				<tbody>
+					<tr>
+						<td><div class="params"><badge class="get">GET</badge><span>id</span> <div class="description">Unique ID of the User</div></div></td>
+					</tr>
+					<tr>
+						<td><div class="params"><badge class="get">GET</badge><span>name</span> <div class="description">Username of the User</div></div></td>
+					</tr>
+				</tbody>
+			</table>
+        </div>
+        <div class="method-example">
+            <div class="method-example-request">
+                <div class="method-example-request-topbar">
+                    <div class="method-example-request-title">ENDPOINT</div>
+                </div>
+                <pre><code>{$bburl}/api/users.php</code></pre>
+            </div>
+			
+			<br /><br /><br /><br /><br />
+			
+			<div class="method-example-request">
+                <div class="method-example-request-topbar">
+                    <div class="method-example-request-title">RESPONSE</div>
+                </div>
+                <pre>
+<code>{
+    "id": 1,
+    "username": "John Doe",
+    "avatar": "images/default_avatar.png",
+    "usergroup": 4,
+    "additionalgroups": [
+        "3"
+    ],
+    "displaygroup": 0,
+    "usertitle": "Fantastic Poster",
+    "away": false,
+    "awayreason": "",
+    "referrer": 0,
+    "timeonline": 21336,
+    "warningpoints": 0
+}</code></pre>
             </div>
         </div>
     </div>
