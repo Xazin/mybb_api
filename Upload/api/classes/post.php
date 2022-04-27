@@ -1,6 +1,7 @@
 <?php
 
-class Post {
+class Post
+{
     private int $id;
     private int $tid;
     private int $fid;
@@ -9,7 +10,8 @@ class Post {
     private string $subject;
     private string $message;
 
-    public function __construct(array $post) {
+    public function __construct(array $post)
+    {
         $this->id = $post['pid'];
         $this->tid = $post['tid'];
         $this->fid = $post['fid'];
@@ -19,9 +21,10 @@ class Post {
         $this->message = $post['message'];
     }
 
-    public function toJson(): string {
+    public function toJson(): string
+    {
         return json_encode(
-            array(
+            [
                 'id' => $this->id,
                 'tid' => $this->tid,
                 'fid' => $this->fid,
@@ -29,13 +32,14 @@ class Post {
                 'author' => $this->author,
                 'subject' => $this->subject,
                 'message' => $this->message,
-            ),
+            ],
             JSON_PRETTY_PRINT
         );
     }
 
-    public function toArray(): array {
-        return array(
+    public function toArray(): array
+    {
+        return [
             'id' => $this->id,
             'tid' => $this->tid,
             'fid' => $this->fid,
@@ -43,6 +47,6 @@ class Post {
             'author' => $this->author,
             'subject' => $this->subject,
             'message' => $this->message,
-        );
+        ];
     }
 }
