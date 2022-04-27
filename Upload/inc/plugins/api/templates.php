@@ -164,3 +164,89 @@ $api_docs_template = '<div class="content">
 </section>
 
 </div>';
+
+$api_usercp_nav_template = '<tbody>
+    <tr>
+        <td class="tcat tcat_menu tcat_collapse">
+            <div><span class="smalltext"><strong>API</strong></span></div>
+        </td>
+    </tr>
+</tbody>
+<tbody>
+    <tr>
+        <td class="trow1 smalltext"><a href="usercp.php?action=api_key">API Key</a></td>
+    </tr>
+</tbody>';
+
+$api_usercp_manage_template = '<html>
+<head>
+    <title>{$mybb->settings[\'bbname\']} - Manage API Key</title>
+    {$headerinclude}
+</head>
+<body>
+    {$header}
+    <table width="100%" border="0" align="center">
+        <tr>
+            {$usercpnav}
+            <td valign="top">
+                <table border="0" cellspacing="0" cellpadding="5" class="tborder">
+                    <tbody>
+                        <tr>
+                            <td class="thead" colspan="2"><strong>Manage API Key</strong></td>
+                        </tr>
+                        <tr>
+                            <td width="{$width}" class="trow1" valign="top">
+                                <fieldset class="trow2">
+                                    <legend><strong>API Key</strong></legend>
+                                    <table style="width:100%" cellspacing="0" cellpadding="5">
+                                        <tbody>
+											<tr>
+												<td>{$error}</td>
+											</tr>
+                                            <tr>
+                                                <td style="padding-right:12px">
+                                                    <input type="text" class="textbox" style="width:100%;text-align:center;" name="key" maxlength="75"
+                                                        value="{$api_key}" readonly disabled>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <form method="post" action="usercp.php?action=api_key">
+                                                        <input type="hidden" name="my_post_key"
+                                                            value="{$mybb->post_code}">
+                                                        <input type="submit" class="button"
+                                                            style="width:100%" value="Generate New API Key">
+                                                    </form>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </fieldset>
+                            </td>
+                            <td width="50%" class="trow1" valign="top" style="{$style}">
+                                <fieldset class="trow2">
+                                    <legend><strong>Requirements</strong></legend>
+                                    <table cellspacing="0" cellpadding="5">
+                                        <tbody>
+											<tr style="{$poststyle}">
+												<td style="{$poststyle_text}"><strong>{$postreq}</strong> Posts required to unlock API <i>(You have {$mybb->user[\'postnum\']})</i></td>
+											</tr>
+											<tr style="{$threadstyle}">
+												<td style="{$threadstyle_text}"><strong>{$threadreq}</strong> Threads required to unlock API <i>(You have {$mybb->user[\'threadnum\']})</i></td>
+											</tr>
+											<tr style="{$repstyle}">
+												<td style="{$repstyle_text}"><strong>{$repreq}</strong> Positive Reputation required to unlock API <i>(You have {$mybb->user[\'reputation\']})</i></td>
+											</tr>
+                                        </tbody>
+                                    </table>
+                                </fieldset>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </td>
+        </tr>
+    </table>
+    {$footer}
+</body>
+</html>';
