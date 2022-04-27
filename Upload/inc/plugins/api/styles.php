@@ -156,34 +156,34 @@ $stylesheet = "    .wrapper {
         background: black;
         border-radius: 10px;
     }
-	
-	badge.get {
+    
+    badge.get {
         background: green!important;
     }
     
     badge.put {
         background: blue!important;
     }
-	
-	.params {
-		width: 100%;
-		padding-bottom: 8px;
-		padding-top: 3px;
-		margin-bottom: 2px;
-		border-bottom: 1px solid #dddddd;
-		font-weight: bold;
-		display: inline-flex;
-		flex-direction: row;
-		flex-wrap: nowrap;
-		align-items: center;
-	}
-	
-	.description {
-		display: inline-block;
-		text-align: end;
-		flex: 1;
-	}
-	
-	.params span {
-		padding-left: 10px;
-	}";
+    
+    .params {
+        width: 100%;
+        padding-bottom: 8px;
+        padding-top: 3px;
+        margin-bottom: 2px;
+        border-bottom: 1px solid #dddddd;
+        font-weight: bold;
+        display: inline-flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        align-items: center;
+    }
+    
+    .description {
+        display: inline-block;
+        text-align: end;
+        flex: 1;
+    }
+    
+    .params span {
+        padding-left: 10px;
+    }";

@@ -6,18 +6,18 @@ $api_template = '<html>
 {$headerinclude}
 </head>
 <body>
-	
+    
 {$header}
 
 <table width="100%" cellspacing="0" cellpadding="{$theme[\'tablespace\']}" border="0" align="center">
-	<tr>
-		<td valign="top" width="200">
-			{$menu}
-		</td>
-		<td valign="top">
-			{$docs}
-		</td>
-	</tr>
+    <tr>
+        <td valign="top" width="200">
+            {$menu}
+        </td>
+        <td valign="top">
+            {$docs}
+        </td>
+    </tr>
 </table>
 
 {$footer}
@@ -100,7 +100,7 @@ $api_docs_template = '<div class="content">
         </div>
     </div>
 </section>
-	
+
 <section id="users" class="method">
     <div class="method-area">
         <div class="method-doc">
@@ -108,24 +108,24 @@ $api_docs_template = '<div class="content">
                 <h1>Users</h1>
             </div>
             <p>
-				The users endpoint can retrieve and search for a user either by their <strong>id</strong> or by their <b>username</b>. Currently both methods 
-				look for an exact match, if you need to do a search on users you can use the <i>search</i> parameter.
+                The users endpoint can retrieve and search for a user either by their <strong>id</strong> or by their <b>username</b>. Currently both methods 
+                look for an exact match, if you need to do a search on users you can use the <i>search</i> parameter.
             </p>
-			<p>
-				Either parameter must exist, and if multiple parameters are given only one will be used after prioritization. (ID = High, Name = Medium, Search = Low)
-			</p>
-			<br />
+            <p>
+                Either parameter must exist, and if multiple parameters are given only one will be used after prioritization. (ID = High, Name = Medium, Search = Low)
+            </p>
+            <br />
             <h3>Parameters</h3>
-			<table width="100%">
-				<tbody>
-					<tr>
-						<td><div class="params"><badge class="get">GET</badge><span>id</span> <div class="description">Unique ID of the User</div></div></td>
-					</tr>
-					<tr>
-						<td><div class="params"><badge class="get">GET</badge><span>name</span> <div class="description">Username of the User</div></div></td>
-					</tr>
-				</tbody>
-			</table>
+            <table width="100%">
+                <tbody>
+                    <tr>
+                        <td><div class="params"><badge class="get">GET</badge><span>id</span> <div class="description">Unique ID of the User</div></div></td>
+                    </tr>
+                    <tr>
+                        <td><div class="params"><badge class="get">GET</badge><span>name</span> <div class="description">Username of the User</div></div></td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
         <div class="method-example">
             <div class="method-example-request">
@@ -134,10 +134,10 @@ $api_docs_template = '<div class="content">
                 </div>
                 <pre><code>{$bburl}/api/users.php</code></pre>
             </div>
-			
-			<br /><br /><br /><br /><br />
-			
-			<div class="method-example-request">
+            
+            <br /><br /><br /><br /><br />
+            
+            <div class="method-example-request">
                 <div class="method-example-request-topbar">
                     <div class="method-example-request-title">RESPONSE</div>
                 </div>
@@ -200,9 +200,9 @@ $api_usercp_manage_template = '<html>
                                     <legend><strong>API Key</strong></legend>
                                     <table style="width:100%" cellspacing="0" cellpadding="5">
                                         <tbody>
-											<tr>
-												<td>{$error}</td>
-											</tr>
+                                            <tr>
+                                                <td>{$error}</td>
+                                            </tr>
                                             <tr>
                                                 <td style="padding-right:12px">
                                                     <input type="text" class="textbox" style="width:100%;text-align:center;" name="key" maxlength="75"
@@ -228,15 +228,15 @@ $api_usercp_manage_template = '<html>
                                     <legend><strong>Requirements</strong></legend>
                                     <table cellspacing="0" cellpadding="5">
                                         <tbody>
-											<tr style="{$poststyle}">
-												<td style="{$poststyle_text}"><strong>{$postreq}</strong> Posts required to unlock API <i>(You have {$mybb->user[\'postnum\']})</i></td>
-											</tr>
-											<tr style="{$threadstyle}">
-												<td style="{$threadstyle_text}"><strong>{$threadreq}</strong> Threads required to unlock API <i>(You have {$mybb->user[\'threadnum\']})</i></td>
-											</tr>
-											<tr style="{$repstyle}">
-												<td style="{$repstyle_text}"><strong>{$repreq}</strong> Positive Reputation required to unlock API <i>(You have {$mybb->user[\'reputation\']})</i></td>
-											</tr>
+                                            <tr style="{$poststyle}">
+                                                <td style="{$poststyle_text}"><strong>{$postreq}</strong> Posts required to unlock API <i>(You have {$mybb->user[\'postnum\']})</i></td>
+                                            </tr>
+                                            <tr style="{$threadstyle}">
+                                                <td style="{$threadstyle_text}"><strong>{$threadreq}</strong> Threads required to unlock API <i>(You have {$mybb->user[\'threadnum\']})</i></td>
+                                            </tr>
+                                            <tr style="{$repstyle}">
+                                                <td style="{$repstyle_text}"><strong>{$repreq}</strong> Positive Reputation required to unlock API <i>(You have {$mybb->user[\'reputation\']})</i></td>
+                                            </tr>
                                         </tbody>
                                     </table>
                                 </fieldset>
