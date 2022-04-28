@@ -38,7 +38,6 @@ $api_menu_template = '<div id="sidebar">
         <h5>ENDPOINTS</h5>
     </div>
     <ul class="sidebar-nav-items">
-		<li><a href="#auth" class="sidebar-nav-item">Authentication</a></li>
         <li><a href="#users" class="sidebar-nav-item">Users</a></li>
         <li><a href="#threads" class="sidebar-nav-item">Threads</a></li>
         <li><a href="#posts" class="sidebar-nav-item">Posts</a></li>
