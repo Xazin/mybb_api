@@ -51,12 +51,17 @@ if ($_GET['id']) {
 
     $fid = $_GET['fid'];
 
-    $query = $db->simple_select('threads', '*', $fid ? "fid = $fid" : null, [
-        'limit' => 10,
-        'limit_start' => $page,
-        'order_by' => 'dateline',
-        'order_dir' => 'DESC',
-    ]);
+    $query = $db->simple_select(
+        'threads',
+        '*',
+        $fid ? "fid = $fid AND visible = 1" : null,
+        [
+            'limit' => 10,
+            'limit_start' => $page,
+            'order_by' => 'dateline',
+            'order_dir' => 'DESC',
+        ]
+    );
 
     $num_rows = $db->num_rows($query);
     if ($num_rows) {
