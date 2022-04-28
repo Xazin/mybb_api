@@ -1,6 +1,6 @@
 <?php
 
-include_once './post.php';
+include_once __DIR__ . '/post.php';
 
 class Thread
 {

@@ -1,5 +1,5 @@
 <?php
 
-require_once 'user.php';
-require_once 'thread.php';
-require_once 'post.php';
+require_once __DIR__ . '/user.php';
+require_once __DIR__ . '/thread.php';
+require_once __DIR__ . '/post.php';
