@@ -38,9 +38,10 @@ $api_menu_template = '<div id="sidebar">
         <h5>ENDPOINTS</h5>
     </div>
     <ul class="sidebar-nav-items">
-        <li><a href="#users" class="sidebar-nav-item">User</a></li>
-        <li><a href="#threads" class="sidebar-nav-item">Thread</a></li>
-        <li><a href="#posts" class="sidebar-nav-item">Post</a></li>
+		<li><a href="#auth" class="sidebar-nav-item">Authentication</a></li>
+        <li><a href="#users" class="sidebar-nav-item">Users</a></li>
+        <li><a href="#threads" class="sidebar-nav-item">Threads</a></li>
+        <li><a href="#posts" class="sidebar-nav-item">Posts</a></li>
     </ul>
 </nav>
 </div>';
@@ -83,24 +84,70 @@ $api_docs_template = '<div class="content">
                 <h1>Authentication</h1>
             </div>
             <p>
-                Authentcation is currently not implemented, everyone can access all endpoints.
+                Authentication might be required for some endpoints, this will be specified when required. The API key is a 
+				randomly generated string, that should be included in all requests that requires authentication.
             </p>
-            <p>
-                Authentication will be implemented such that, each external client must use a uniquely generated API token, and use it as the Bearer when accessing the API.
-                As plans are not final, this might change in the future. Each user can generate <strong>one</strong> API key, and can then authenticate requests using it.
-            </p>
+			<p>
+				To include the API key in a request, add the <code style="color:orange">API-KEY</code> header to the request containing the API key.
+			</p>
+			<p>
+				The authentication has it\'s own endpoint, which can be used to fetch and check if any user exists with the given API key.
+				This allows software to authenticate a user by API key instead of Username and Password.
+			</p>
+			<p>
+				It is up to the external software to lock the usage of their systems to the specific User, this can be done by IP whitelisting, 
+				or by implementing a GUID or SID lock and storing the credentials in their own database or storage.
+			</p>
         </div>
-        <div class="method-example">
+
+		
+		<br /><br /><br /><br /><br />
+		
+		<div class="method-example">
+			<div class="method-example-request">
+                <div class="method-example-request-topbar">
+                    <div class="method-example-request-title">API KEY</div>
+                </div>
+                <pre><code>API-KEY: 22f29bcb-95bd7a92-f91ce791-82069</code></pre>
+            </div>
+			
+			<br /><br /><br /><br /><br />
+			
             <div class="method-example-request">
                 <div class="method-example-request-topbar">
-                    <div class="method-example-request-title">BEARER TOKEN</div>
+                    <div class="method-example-request-title">ENDPOINT</div>
                 </div>
-                <pre><code>Bearer: MYBB-AW6A-DWA9-A131-A69A</code></pre>
+                <pre><code>{$bburl}/api/users.php</code></pre>
+            </div>
+			
+			<br /><br /><br /><br /><br />
+			
+			<div class="method-example-request">
+                <div class="method-example-request-topbar">
+                    <div class="method-example-request-title">RESPONSE</div>
+                </div>
+                <pre>
+<code>{
+    "id": 1,
+    "username": "John Doe",
+    "avatar": "images/default_avatar.png",
+    "usergroup": 4,
+    "additionalgroups": [
+        "3"
+    ],
+    "displaygroup": 0,
+    "usertitle": "Fantastic Poster",
+    "away": false,
+    "awayreason": "",
+    "referrer": 0,
+    "timeonline": 21336,
+    "warningpoints": 0
+}</code></pre>
             </div>
         </div>
     </div>
 </section>
-
+	
 <section id="users" class="method">
     <div class="method-area">
         <div class="method-doc">
@@ -108,24 +155,24 @@ $api_docs_template = '<div class="content">
                 <h1>Users</h1>
             </div>
             <p>
-                The users endpoint can retrieve and search for a user either by their <strong>id</strong> or by their <b>username</b>. Currently both methods 
-                look for an exact match, if you need to do a search on users you can use the <i>search</i> parameter.
+				The users endpoint can retrieve and search for a user either by their <strong>id</strong> or by their <b>username</b>. Currently both methods 
+				look for an exact match.
             </p>
-            <p>
-                Either parameter must exist, and if multiple parameters are given only one will be used after prioritization. (ID = High, Name = Medium, Search = Low)
-            </p>
-            <br />
+			<p>
+				Either parameter must exist, and if multiple parameters are given only one will be used after prioritization. (ID = High, Name = Medium)
+			</p>
+			<br />
             <h3>Parameters</h3>
-            <table width="100%">
-                <tbody>
-                    <tr>
-                        <td><div class="params"><badge class="get">GET</badge><span>id</span> <div class="description">Unique ID of the User</div></div></td>
-                    </tr>
-                    <tr>
-                        <td><div class="params"><badge class="get">GET</badge><span>name</span> <div class="description">Username of the User</div></div></td>
-                    </tr>
-                </tbody>
-            </table>
+			<table width="100%">
+				<tbody>
+					<tr>
+						<td><div class="params"><badge class="get">GET</badge><span>id</span> <div class="description">Unique ID of the User</div></div></td>
+					</tr>
+					<tr>
+						<td><div class="params"><badge class="get">GET</badge><span>name</span> <div class="description">Username of the User</div></div></td>
+					</tr>
+				</tbody>
+			</table>
         </div>
         <div class="method-example">
             <div class="method-example-request">
@@ -134,10 +181,10 @@ $api_docs_template = '<div class="content">
                 </div>
                 <pre><code>{$bburl}/api/users.php</code></pre>
             </div>
-            
-            <br /><br /><br /><br /><br />
-            
-            <div class="method-example-request">
+			
+			<br /><br /><br /><br /><br />
+			
+			<div class="method-example-request">
                 <div class="method-example-request-topbar">
                     <div class="method-example-request-title">RESPONSE</div>
                 </div>
@@ -163,6 +210,138 @@ $api_docs_template = '<div class="content">
     </div>
 </section>
 
+<section id="threads" class="method">
+    <div class="method-area">
+        <div class="method-doc">
+            <div class="method-title">
+                <h1>Threads</h1>
+            </div>
+            <p>
+				The threads endpoint can be used to retrieve either a specific thread, or a paginated list of threads. Additional option to lookup threads in specific Forums by Forum ID (FID).
+            </p>
+			<p>
+				For the paginated response (Automatically by not including ID paramter) the amount per page is set to 10 results.
+			</p>
+			<br />
+            <h3>Parameters</h3>
+			<table width="100%">
+				<tbody>
+					<tr>
+						<td><div class="params"><badge class="get">GET</badge><span>id</span> <div class="description">Unique ID of the Thread</div></div></td>
+					</tr>
+					<tr>
+						<td><div class="params"><badge class="get">GET</badge><span>fid</span> <div class="description">Forum ID to lookup</div></div></td>
+					</tr>
+					<tr>
+						<td><div class="params"><badge class="get">GET</badge><span>page</span> <div class="description">Page to lookup</div></div></td>
+					</tr>
+				</tbody>
+			</table>
+        </div>
+        <div class="method-example">
+            <div class="method-example-request">
+                <div class="method-example-request-topbar">
+                    <div class="method-example-request-title">ENDPOINT</div>
+                </div>
+                <pre><code>{$bburl}/api/threads.php</code></pre>
+            </div>
+			
+			<br /><br /><br /><br /><br />
+			
+			<div class="method-example-request">
+                <div class="method-example-request-topbar">
+                    <div class="method-example-request-title">RESPONSE</div>
+                </div>
+                <pre>
+<code>{
+    "id": 8,
+    "subject": "Hello World",
+    "fid": 2,
+    "uid": 1,
+    "author": "admin",
+    "views": 1,
+    "replies": 0,
+    "closed": false,
+    "sticky": false,
+    "createdAt": 1651180770,
+    "post": {
+        "id": 22,
+        "tid": 8,
+        "fid": 2,
+        "uid": 1,
+        "author": "admin",
+        "subject": "Hello World",
+        "message": "This thread is the first of it\'s kind! Hello World!"
+    }
+}</code></pre>
+            </div>
+        </div>
+    </div>
+</section>
+	
+<section id="posts" class="method">
+    <div class="method-area">
+        <div class="method-doc">
+            <div class="method-title">
+                <h1>Posts</h1>
+            </div>
+            <p>
+				The posts endpoint can be used to retrieve either a specific post, or a paginated list of posts. Additional option to lookup posts in specific Forums by Forum ID (FID) and specific Thread by Thread ID (TID).
+            </p>
+			<p>
+				In case of multiple included parameters, the most suitable one will be picked, even if it will not have any results. (ID = High, FID = Medium, TID = Low)
+			</p>
+			<p>
+				For the paginated response (Automatically by not including ID paramter) the amount per page is set to 10 results.
+			</p>
+			<br />
+            <h3>Parameters</h3>
+			<table width="100%">
+				<tbody>
+					<tr>
+						<td><div class="params"><badge class="get">GET</badge><span>id</span> <div class="description">Unique ID of the Post</div></div></td>
+					</tr>
+					<tr>
+						<td><div class="params"><badge class="get">GET</badge><span>fid</span> <div class="description">Forum ID to lookup posts</div></div></td>
+					</tr>
+					<tr>
+						<td><div class="params"><badge class="get">GET</badge><span>tid</span> <div class="description">Thread ID to lookup posts</div></div></td>
+					</tr>
+					<tr>
+						<td><div class="params"><badge class="get">GET</badge><span>page</span> <div class="description">Page to lookup</div></div></td>
+					</tr>
+				</tbody>
+			</table>
+        </div>
+        <div class="method-example">
+            <div class="method-example-request">
+                <div class="method-example-request-topbar">
+                    <div class="method-example-request-title">ENDPOINT</div>
+                </div>
+                <pre><code>{$bburl}/api/posts.php</code></pre>
+            </div>
+			
+			<br /><br /><br /><br /><br />
+			
+			<div class="method-example-request">
+                <div class="method-example-request-topbar">
+                    <div class="method-example-request-title">RESPONSE</div>
+                </div>
+                <pre>
+<code>{
+    "id": 22,
+    "tid": 8,
+    "fid": 2,
+    "uid": 1,
+    "author": "admin",
+    "subject": "Hello World",
+    "message": "This thread is the first of it\'s kind! Hello World!"
+}</code></pre>
+            </div>
+        </div>
+    </div>
+</section>
+	
 </div>';
 
 $api_usercp_nav_template = '<tbody>
