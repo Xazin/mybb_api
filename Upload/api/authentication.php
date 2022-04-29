@@ -12,7 +12,17 @@ header('Content-Type: Application/Json');
 $apiKey = $_SERVER['HTTP_API_KEY'] ?? (getallheaders()['Api-Key'] ?? null);
 
 if ($apiKey) {
-    $query = $db->simple_select('users', '*', "api_key = '$apiKey'");
+    $name = $_GET['name'] ?? $_POST['name'];
+    if (empty($name)) {
+        http_response_code(401);
+        $error = new ApiError(false, 'Request Failed: Name is missing');
+        $error->display();
+    }
+    
+    $name = htmlspecialchars($name);
+    $apiKey = htmlspecialchars($apiKey);
+
+    $query = $db->simple_select('users', '*', "api_key = '$apiKey' AND username = '$name'");
     $user = $db->fetch_array($query);
 
     if ($user) {
@@ -28,7 +38,7 @@ if ($apiKey) {
         echo $user->toJson();
     } else {
         http_response_code(401);
-        $error = new ApiError(false, 'Request Failed: API Key is invalid');
+        $error = new ApiError(false, 'Request Failed: API Key and Name combination is invalid');
         $error->display();
     }
 } else {

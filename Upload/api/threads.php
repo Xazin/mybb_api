@@ -19,7 +19,7 @@ if ($mybb->request_method == 'post') {
 header('Content-Type: Application/Json');
 
 if ($_GET['id']) {
-    $identifier = $_GET['id'];
+    $identifier = htmlspecialchars($_GET['id']);
 
     $query = $db->simple_select('threads', '*', "tid = $identifier");
     $thread = $db->fetch_array($query);
@@ -49,7 +49,7 @@ if ($_GET['id']) {
     $page = 10 * (($_GET['page'] ?? 0) - 1);
     $page = $page < 1 ? 0 : $page;
 
-    $fid = $_GET['fid'];
+    $fid = htmlspecialchars($_GET['fid']);
 
     $query = $db->simple_select(
         'threads',

@@ -90,13 +90,22 @@ $api_docs_template = '<div class="content">
 				To include the API key in a request, add the <code style="color:orange">API-KEY</code> header to the request containing the API key.
 			</p>
 			<p>
-				The authentication has it\'s own endpoint, which can be used to fetch and check if any user exists with the given API key.
+				The authentication has it\'s own endpoint, which can be used to authenticate a specific user.
 				This allows software to authenticate a user by API key instead of Username and Password.
 			</p>
 			<p>
 				It is up to the external software to lock the usage of their systems to the specific User, this can be done by IP whitelisting, 
 				or by implementing a GUID or SID lock and storing the credentials in their own database or storage.
 			</p>
+            <br />
+            <h3>Parameters</h3>
+			<table width="100%">
+				<tbody>
+					<tr>
+						<td><div class="params"><badge class="get">GET</badge> <badge class="post" style="margin-left:6px;">POST</badge><span>name</span> <div class="description">Username of the User</div></div></td>
+					</tr>
+				</tbody>
+			</table>
         </div>
 
 		
