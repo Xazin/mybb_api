@@ -26,6 +26,7 @@ if ($_GET['id'] || $_GET['name']) {
         $isId = true;
     }
 
+    $identifier = htmlspecialchars($identifier);
     $query = $db->simple_select(
         'users',
         '*',

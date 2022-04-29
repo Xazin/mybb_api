@@ -67,11 +67,11 @@ $stylesheet = "    .wrapper {
         color: #7f8fa2 !important;
     }
     
-    a, a:link {
+    #sidebar a, a:link {
         color: #333 !important;
     }
     
-    a, a:hover {
+    #sidebar a, a:hover {
         text-decoration: none;
         outline: 0;
         cursor: pointer;
@@ -161,6 +161,10 @@ $stylesheet = "    .wrapper {
         background: green!important;
     }
     
+    badge.post {
+        background: red!important;
+    }
+
     badge.put {
         background: blue!important;
     }

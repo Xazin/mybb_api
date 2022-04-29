@@ -35,6 +35,7 @@ if ($_GET['id'] || $_GET['tid'] || $_GET['fid']) {
     $page = 10 * (($_GET['page'] ?? 0) - 1);
     $page = $page < 1 ? 0 : $page;
 
+    $identifier = htmlspecialchars($identifier);
     $query = $db->simple_select(
         'posts',
         '*',
