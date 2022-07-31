@@ -286,7 +286,7 @@ function api_is_active()
 //     // TODO: Implement activated/deactivated guard
 // }
 
-function generate_key()
+function api_generate_key()
 {
     global $mybb;
 
@@ -344,7 +344,7 @@ function usercp_manage()
             }
 
             if (empty($error)) {
-                $api_key = generate_key();
+                $api_key = api_generate_key();
                 $db->update_query(
                     'users',
                     [
