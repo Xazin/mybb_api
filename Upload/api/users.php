@@ -18,47 +18,56 @@ if ($mybb->request_method == 'post') {
 
 header('Content-Type: Application/Json');
 
-if ($_GET['id'] || $_GET['name']) {
-    $identifier = $_GET['id'] ?? $_GET['name'];
+$apiKey = $_SERVER['HTTP_API_KEY'] ?? (getallheaders()['Api-Key'] ?? null);
 
-    $isId = false;
-    if ($_GET['id']) {
-        $isId = true;
-    }
+if ($apiKey) {
+	if ($_GET['id'] || $_GET['name']) {
+		$identifier = $_GET['id'] ?? $_GET['name'];
 
-    $identifier = htmlspecialchars($identifier);
-    $query = $db->simple_select(
-        'users',
-        '*',
-        $isId ? "uid = $identifier" : "username = '$identifier'"
-    );
-    $user = $db->fetch_array($query);
+		$isId = false;
+		if ($_GET['id']) {
+			$isId = true;
+		}
 
-    if ($user) {
-        global $mybb;
+		$identifier = htmlspecialchars($identifier);
+		$query = $db->simple_select(
+			'users',
+			'*',
+			$isId ? "uid = $identifier" : "username = '$identifier'"
+		);
+		$user = $db->fetch_array($query);
 
-        http_response_code(200);
+		if ($user) {
+			global $mybb;
 
-        if (!$user['avatar'] || empty($user['avatar'])) {
-            $user['avatar'] = $mybb->settings['useravatar'];
-        }
+			http_response_code(200);
 
-        $user = new User($user);
-        echo $user->toJson();
-    } else {
-        http_response_code(404);
-        $error = new ApiError(
-            false,
-            "GET request failed: no user matching given identifier ($identifier)"
-        );
-        $error->display();
-    }
+			if (!$user['avatar'] || empty($user['avatar'])) {
+				$user['avatar'] = $mybb->settings['useravatar'];
+			}
+
+			$user = new User($user);
+			echo $user->toJson();
+		} else {
+			http_response_code(404);
+			$error = new ApiError(
+				false,
+				"GET request failed: no user matching given identifier ($identifier)"
+			);
+			$error->display();
+		}
+	} else {
+		// TODO: Implement paginated Users
+		http_response_code(400);
+		$error = new ApiError(
+			false,
+			'GET request failed: missing identifier to find a user'
+		);
+		$error->display();
+	}
+
 } else {
-    // TODO: Implement paginated Users
-    http_response_code(400);
-    $error = new ApiError(
-        false,
-        'GET request failed: missing identifier to find a user'
-    );
+    http_response_code(401);
+    $error = new ApiError(false, 'Request Failed: API Key is missing');
     $error->display();
 }
